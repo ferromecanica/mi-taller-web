@@ -6,8 +6,8 @@
     <title>Ferro Mecánica | Servicio Integral del Automotor</title>
     <!-- Tailwind para diseño moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Fuentes: Audiowide para FERRO -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -18,6 +18,7 @@
         .text-ferro { color: var(--ferro-orange); }
         .border-ferro { border-color: var(--ferro-orange); }
         
+        .font-audiowide { font-family: 'Audiowide', cursive; }
         body { font-family: 'Urbanist', sans-serif; }
 
         .dark-map {
@@ -31,11 +32,27 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,1) 100%);
         }
 
-        /* Estilo para el logo imagen */
-        .logo-img {
-            height: 70px;
-            width: auto;
+        /* LOGO TIPO BLOQUE RE-IMPLEMENTADO */
+        .logo-container {
+            display: inline-flex;
+            flex-direction: column;
+            line-height: 0.75;
+            align-items: center;
+        }
+        .logo-ferro {
+            font-size: 3.5rem;
+            letter-spacing: -0.05em;
             display: block;
+        }
+        .logo-mecanica {
+            font-size: 0.9rem;
+            font-weight: 900;
+            letter-spacing: 0.48em;
+            width: 100%;
+            display: block;
+            margin-top: 6px;
+            text-align: center;
+            text-indent: 0.48em;
         }
 
         /* Animación para el botón flotante */
@@ -47,6 +64,10 @@
         .float-wsp {
             animation: pulse-orange 2s infinite;
         }
+
+        /* Control de vistas */
+        .page-view { display: none; }
+        .page-view.active { display: block; }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-slate-100 leading-normal">
@@ -54,16 +75,21 @@
     <!-- Navegación -->
     <nav class="bg-black/95 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-28 items-center">
+            <div class="flex justify-between h-32 items-center">
                 <div class="flex-shrink-0">
-                    <a href="#inicio" class="block">
-                        <img src="ENCABEZADO REPORTE Y TICKET.jpg" alt="Ferro Mecánica Logo" class="logo-img">
+                    <a href="javascript:void(0)" onclick="showPage('home')" class="logo-container group">
+                        <span class="logo-ferro font-audiowide uppercase text-white">
+                            <span class="text-ferro">F</span>ERRO
+                        </span>
+                        <span class="logo-mecanica text-ferro uppercase italic font-black">
+                            MECÁNICA
+                        </span>
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
-                    <a href="#inicio" class="nav-link-hover transition-colors">Inicio</a>
-                    <a href="#servicios" class="nav-link-hover transition-colors">Servicios</a>
-                    <a href="#contacto" class="nav-link-hover transition-colors">Ubicación</a>
+                    <a href="javascript:void(0)" onclick="showPage('home')" class="nav-link-hover transition-colors">Inicio</a>
+                    <a href="javascript:void(0)" onclick="showPage('home', 'servicios')" class="nav-link-hover transition-colors">Servicios</a>
+                    <a href="javascript:void(0)" onclick="showPage('home', 'contacto')" class="nav-link-hover transition-colors">Ubicación</a>
                     <a href="https://wa.me/3417183101" target="_blank" class="bg-ferro text-black px-6 py-3 rounded-sm font-black hover:bg-orange-500 transition-all">Turnos</a>
                 </div>
             </div>
@@ -75,109 +101,145 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 hero-overlay z-10"></div>
-            <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Taller Mecánico" class="w-full h-full object-cover">
-        </div>
-        
-        <div class="relative z-20 max-w-4xl px-4">
-            <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Servicio Integral del Automotor</span>
-            <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase leading-none text-white">
-                TALLER <br><span class="text-ferro italic">ESPECIALIZADO</span>
-            </h1>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#contacto-form" class="bg-ferro text-black px-12 py-4 rounded-sm font-black text-lg hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20">
-                    CONTACTAR
-                </a>
-                <a href="#servicios" class="bg-white/5 backdrop-blur-md border border-white/10 px-12 py-4 rounded-sm font-black text-lg hover:bg-white/10 transition-all">
-                    SERVICIOS
-                </a>
+    <!-- VISTA: INICIO -->
+    <div id="home-page" class="page-view active">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 hero-overlay z-10"></div>
+                <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Taller Mecánico" class="w-full h-full object-cover">
             </div>
-        </div>
-    </section>
-
-    <!-- Servicios -->
-    <section id="servicios" class="py-24 bg-[#0a0a0a]">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="border-t border-ferro pt-6">
-                    <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">01. Diagnóstico</h3>
-                    <p class="text-slate-400 text-sm">Escaneo computarizado avanzado para sistemas de inyección y electrónica general.</p>
-                </div>
-                <div class="border-t border-ferro pt-6">
-                    <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">02. Mantenimiento</h3>
-                    <p class="text-slate-400 text-sm">Service oficial multimarca, cambios de aceite y filtros con insumos premium.</p>
-                </div>
-                <div class="border-t border-ferro pt-6">
-                    <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">03. Reparación</h3>
-                    <p class="text-slate-400 text-sm">Tren delantero, frenos y mecánica pesada con garantía escrita de trabajo.</p>
+            
+            <div class="relative z-20 max-w-4xl px-4 text-center">
+                <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Servicio Integral del Automotor</span>
+                <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase leading-none text-white">
+                    TALLER <br><span class="text-ferro italic">ESPECIALIZADO</span>
+                </h1>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="javascript:void(0)" onclick="showPage('contact-page')" class="bg-ferro text-black px-12 py-4 rounded-sm font-black text-lg hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20">
+                        CONTACTAR
+                    </a>
+                    <a href="#servicios" class="bg-white/5 backdrop-blur-md border border-white/10 px-12 py-4 rounded-sm font-black text-lg hover:bg-white/10 transition-all">
+                        SERVICIOS
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Formulario de Contacto -->
-    <section id="contacto-form" class="py-24 bg-black">
+        <!-- Servicios -->
+        <section id="servicios" class="py-24 bg-[#0a0a0a]">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="border-t border-ferro pt-6">
+                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">01. Diagnóstico</h3>
+                        <p class="text-slate-400 text-sm">Escaneo computarizado avanzado para sistemas de inyección y electrónica general.</p>
+                    </div>
+                    <div class="border-t border-ferro pt-6">
+                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">02. Mantenimiento</h3>
+                        <p class="text-slate-400 text-sm">Service oficial multimarca, cambios de aceite y filtros con insumos premium.</p>
+                    </div>
+                    <div class="border-t border-ferro pt-6">
+                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">03. Reparación</h3>
+                        <p class="text-slate-400 text-sm">Tren delantero, frenos y mecánica pesada con garantía escrita de trabajo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación Corta -->
+        <section id="contacto" class="py-24 bg-zinc-900/20">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="bg-black rounded-sm border border-white/5 flex flex-col lg:flex-row overflow-hidden shadow-2xl">
+                    <div class="p-12 lg:w-1/2">
+                        <h2 class="text-3xl font-black uppercase italic mb-8 text-white">Dónde estamos</h2>
+                        <div class="space-y-6 text-slate-400">
+                            <p><i class="fas fa-map-marker-alt text-ferro mr-3"></i> Santa María de Oro 217 bis, Rosario</p>
+                            <p><i class="fab fa-whatsapp text-ferro mr-3 text-lg"></i> 341 718-3101</p>
+                            <p><i class="fas fa-clock text-ferro mr-3"></i> Lunes a Viernes: 08:30 a 18:00 hs</p>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 h-80 lg:h-auto min-h-[400px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.563456345634!2d-60.6766!3d-32.9123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6534563456345%3A0x6345634563456345!2sSanta%20Mar%C3%ADa%20de%20Oro%20217%20bis%2C%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v123456789" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- VISTA: FORMULARIO DE CONSULTA (PÁGINA SEPARADA) -->
+    <div id="contact-page" class="page-view py-32 bg-black min-h-screen">
         <div class="max-w-4xl mx-auto px-4">
+            <button onclick="showPage('home')" class="text-ferro font-bold uppercase tracking-widest text-xs mb-12 hover:text-white transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Volver al inicio
+            </button>
+            
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black uppercase italic italic text-white mb-4">Envíanos tu consulta</h2>
-                <p class="text-slate-500 uppercase tracking-widest text-xs">Te responderemos a la brevedad por correo o WhatsApp</p>
+                <h2 class="text-5xl font-black uppercase italic text-white mb-4">Consulta Online</h2>
+                <div class="h-1 w-20 bg-ferro mx-auto mb-6"></div>
+                <p class="text-slate-500 uppercase tracking-widest text-xs">Completa el formulario y te contactaremos a la brevedad</p>
             </div>
 
-            <form action="https://formspree.io/f/ferrotaller@outlook.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action="https://formspree.io/f/ferrotaller@outlook.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-zinc-900/30 p-8 md:p-12 rounded-sm border border-white/5 shadow-2xl">
                 <div class="space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Nombre Completo</label>
-                    <input type="text" name="name" required class="w-full bg-zinc-900 border border-white/10 rounded-sm px-4 py-3 outline-none focus:border-ferro transition-colors text-white">
+                    <input type="text" name="name" required class="w-full bg-black border border-white/10 rounded-sm px-4 py-4 outline-none focus:border-ferro transition-colors text-white">
                 </div>
                 <div class="space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Teléfono / WhatsApp</label>
-                    <input type="tel" name="phone" required class="w-full bg-zinc-900 border border-white/10 rounded-sm px-4 py-3 outline-none focus:border-ferro transition-colors text-white">
+                    <input type="tel" name="phone" required class="w-full bg-black border border-white/10 rounded-sm px-4 py-4 outline-none focus:border-ferro transition-colors text-white">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Correo Electrónico</label>
-                    <input type="email" name="_replyto" required class="w-full bg-zinc-900 border border-white/10 rounded-sm px-4 py-3 outline-none focus:border-ferro transition-colors text-white">
+                    <input type="email" name="_replyto" required class="w-full bg-black border border-white/10 rounded-sm px-4 py-4 outline-none focus:border-ferro transition-colors text-white">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Mensaje / Motivo de consulta</label>
-                    <textarea name="message" rows="4" required class="w-full bg-zinc-900 border border-white/10 rounded-sm px-4 py-3 outline-none focus:border-ferro transition-colors text-white resize-none"></textarea>
+                    <textarea name="message" rows="5" required class="w-full bg-black border border-white/10 rounded-sm px-4 py-4 outline-none focus:border-ferro transition-colors text-white resize-none"></textarea>
                 </div>
-                <div class="md:col-span-2 pt-4">
-                    <button type="submit" class="w-full bg-ferro text-black font-black py-4 uppercase tracking-widest hover:bg-orange-500 transition-all shadow-lg shadow-orange-900/20">
-                        Enviar Mensaje
+                <div class="md:col-span-2 pt-6">
+                    <button type="submit" class="w-full bg-ferro text-black font-black py-5 uppercase tracking-widest hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20">
+                        Enviar Consulta Técnica
                     </button>
                 </div>
             </form>
         </div>
-    </section>
-
-    <!-- Ubicación -->
-    <section id="contacto" class="py-24 bg-zinc-900/20">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="bg-black rounded-sm border border-white/5 flex flex-col lg:flex-row overflow-hidden shadow-2xl">
-                <div class="p-12 lg:w-1/2">
-                    <h2 class="text-3xl font-black uppercase italic mb-8 text-white">Dónde estamos</h2>
-                    <div class="space-y-6 text-slate-400">
-                        <p><i class="fas fa-map-marker-alt text-ferro mr-3"></i> Santa María de Oro 217 bis, Rosario</p>
-                        <p><i class="fab fa-whatsapp text-ferro mr-3 text-lg"></i> 341 718-3101</p>
-                        <p><i class="fas fa-clock text-ferro mr-3"></i> Lunes a Viernes: 08:30 a 18:00 hs</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 h-80 lg:h-auto min-h-[400px]">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.563456345634!2d-60.6766!3d-32.9123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6534563456345%3A0x6345634563456345!2sSanta%20Mar%C3%ADa%20de%20Oro%20217%20bis%2C%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v123456789" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center">
-            <img src="ENCABEZADO REPORTE Y TICKET.jpg" alt="Ferro Mecánica Logo" class="h-16 w-auto mb-6 opacity-80">
+            <div class="logo-container mb-6">
+                <span class="logo-ferro font-audiowide uppercase text-white">
+                    <span class="text-ferro">F</span>ERRO
+                </span>
+                <span class="logo-mecanica text-ferro uppercase italic font-black">
+                    MECÁNICA
+                </span>
+            </div>
             <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">© 2026 Ferro Mecánica • Rosario, Argentina</p>
         </div>
     </footer>
+
+    <script>
+        function showPage(pageId, sectionId) {
+            // Ocultar todas las páginas
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            
+            // Mostrar la página solicitada
+            if(pageId === 'contact-page') {
+                document.getElementById('contact-page').classList.add('active');
+                window.scrollTo(0, 0);
+            } else {
+                document.getElementById('home-page').classList.add('active');
+                if(sectionId) {
+                    const element = document.getElementById(sectionId);
+                    if(element) element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
