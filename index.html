@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferro Mecánica | Servicio Integral del Automotor</title>
+    <!-- Tailwind para diseño moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes: Audiowide para FERRO -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -21,7 +24,7 @@
             filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
         }
 
-        /* LOGO REDISEÑADO TIPO BLOQUE */
+        /* LOGO REDISEÑADO - TAMAÑO GRANDE Y BLOQUE SIMÉTRICO */
         .logo-container {
             display: inline-flex;
             flex-direction: column;
@@ -29,21 +32,26 @@
             align-items: flex-start;
         }
         .logo-ferro {
-            font-size: 2.8rem; /* Más grande */
-            letter-spacing: -0.04em;
+            font-size: 4.2rem; /* Tamaño aumentado significativamente */
+            letter-spacing: -0.05em;
             display: block;
         }
         .logo-mecanica {
-            font-size: 0.68rem; /* Proporcionalmente más pequeño */
+            font-size: 1.1rem; /* Agrandado también proporcionalmente */
             font-weight: 900;
-            letter-spacing: 0.64em; /* Calibrado para el ancho de FERRO */
+            letter-spacing: 0.48em; /* Ajustado para coincidir con el ancho de FERRO */
             width: 100%;
             display: block;
-            margin-top: 4px;
-            text-indent: 0.32em; /* Centrado óptico por el espaciado final */
+            margin-top: 6px;
+            text-indent: 0.1em;
         }
         
         .nav-link-hover:hover { color: var(--ferro-orange); }
+
+        /* Efecto de transparencia sobre la imagen de fondo */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,1) 100%);
+        }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-slate-100 leading-normal">
@@ -51,7 +59,7 @@
     <!-- Navegación -->
     <nav class="bg-black/90 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-28 items-center">
+            <div class="flex justify-between h-32 items-center">
                 <div class="flex-shrink-0">
                     <a href="#inicio" class="logo-container group">
                         <span class="logo-ferro font-audiowide uppercase text-white">
@@ -75,15 +83,17 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative min-h-[80vh] flex items-center justify-center text-center overflow-hidden">
+    <!-- Hero Section con la imagen del taller cargada -->
+    <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-[#0a0a0a] z-10"></div>
-            <img src="https://images.unsplash.com/photo-1486006396123-c7756710db6e?auto=format&fit=crop&q=80&w=1600" alt="Taller" class="w-full h-full object-cover">
+            <!-- Overlay para asegurar lectura -->
+            <div class="absolute inset-0 hero-overlay z-10"></div>
+            <!-- Imagen enviada por el usuario -->
+            <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Taller Mecánico" class="w-full h-full object-cover">
         </div>
         
         <div class="relative z-20 max-w-4xl px-4">
-            <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Especialistas en Inyección</span>
+            <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Especialistas en Inyección y Mecánica General</span>
             <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase leading-none text-white">
                 ALTA <br><span class="text-ferro italic">PRECISIÓN</span>
             </h1>
@@ -98,7 +108,7 @@
         </div>
     </section>
 
-    <!-- Servicios Corto -->
+    <!-- Servicios -->
     <section id="servicios" class="py-24 bg-[#0a0a0a]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -139,7 +149,7 @@
 
     <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center">
             <div class="logo-container mb-6">
                 <span class="logo-ferro font-audiowide uppercase text-white">
                     <span class="text-ferro">F</span>ERRO
