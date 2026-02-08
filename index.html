@@ -32,6 +32,11 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,1) 100%);
         }
 
+        /* Degradado para las tarjetas de servicios */
+        .service-card-overlay {
+            background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.6) 100%);
+        }
+
         /* LOGO TIPO BLOQUE CENTRADO */
         .logo-container {
             display: inline-flex;
@@ -146,19 +151,41 @@
         <!-- Servicios -->
         <section id="servicios" class="py-24 bg-[#0a0a0a]">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="border-t border-ferro pt-6">
-                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">01. Diagnóstico</h3>
-                        <p class="text-slate-400 text-sm">Escaneo computarizado avanzado para sistemas de inyección y electrónica general.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Servicio 01: Diagnóstico -->
+                    <div class="relative h-80 group overflow-hidden border border-white/5 rounded-sm">
+                        <img src="FOTO SCANEO.jpg" alt="Diagnóstico" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 service-card-overlay z-10"></div>
+                        <div class="relative z-20 p-8 h-full flex flex-col justify-end border-t-2 border-ferro">
+                            <h3 class="text-ferro font-black uppercase text-xs tracking-widest mb-2">01. Diagnóstico</h3>
+                            <h4 class="text-xl font-black text-white uppercase mb-2 italic">Escaneo Computarizado</h4>
+                            <p class="text-slate-400 text-sm leading-snug">Sistemas de inyección avanzada y electrónica general de última generación.</p>
+                        </div>
                     </div>
-                    <div class="border-t border-ferro pt-6">
-                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">02. Mantenimiento</h3>
-                        <p class="text-slate-400 text-sm">Service oficial multimarca, cambios de aceite y filtros con insumos premium.</p>
+
+                    <!-- Servicio 02: Mantenimiento (Placeholder hasta que subas foto) -->
+                    <div class="relative h-80 group overflow-hidden border border-white/5 rounded-sm">
+                        <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Mantenimiento" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 service-card-overlay z-10"></div>
+                        <div class="relative z-20 p-8 h-full flex flex-col justify-end border-t-2 border-ferro">
+                            <h3 class="text-ferro font-black uppercase text-xs tracking-widest mb-2">02. Mantenimiento</h3>
+                            <h4 class="text-xl font-black text-white uppercase mb-2 italic">Service Premium</h4>
+                            <p class="text-slate-400 text-sm leading-snug">Cambio de aceite y filtros con insumos originales y marcas líderes.</p>
+                        </div>
                     </div>
-                    <div class="border-t border-ferro pt-6">
-                        <h3 class="text-ferro font-black uppercase text-sm tracking-widest mb-4">03. Reparación</h3>
-                        <p class="text-slate-400 text-sm">Tren delantero, frenos y mecánica pesada con garantía escrita de trabajo.</p>
+
+                    <!-- Servicio 03: Reparación (Placeholder hasta que subas foto) -->
+                    <div class="relative h-80 group overflow-hidden border border-white/5 rounded-sm">
+                        <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Reparación" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <div class="absolute inset-0 service-card-overlay z-10"></div>
+                        <div class="relative z-20 p-8 h-full flex flex-col justify-end border-t-2 border-ferro">
+                            <h3 class="text-ferro font-black uppercase text-xs tracking-widest mb-2">03. Reparación</h3>
+                            <h4 class="text-xl font-black text-white uppercase mb-2 italic">Mecánica Pesada</h4>
+                            <p class="text-slate-400 text-sm leading-snug">Tren delantero, frenos y reparaciones integrales con garantía escrita.</p>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
