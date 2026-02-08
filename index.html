@@ -77,6 +77,13 @@
         }
         input:focus, textarea:focus, select:focus {
             border-color: var(--ferro-orange) !important;
+            outline: none;
+        }
+        
+        /* Ajuste para el picker de fecha en modo oscuro */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
         }
     </style>
 </head>
@@ -224,34 +231,57 @@
                 <p class="text-slate-500 uppercase tracking-widest text-xs">Ingresa los datos del vehículo para agendar tu visita</p>
             </div>
 
-            <!-- Formulario de Turnos -->
-            <form action="https://formspree.io/f/xqedakee" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#151515] p-8 md:p-12 rounded-sm border border-white/10 shadow-2xl">
-                <div class="space-y-2">
+            <!-- Formulario de Turnos Actualizado -->
+            <form action="https://formspree.io/f/xqedakee" method="POST" class="grid grid-cols-1 md:grid-cols-4 gap-6 bg-[#151515] p-8 md:p-12 rounded-sm border border-white/10 shadow-2xl">
+                <!-- Nombre: Ocupa todo el ancho -->
+                <div class="md:col-span-4 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Nombre del Propietario</label>
                     <input type="text" name="cliente_nombre" required class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
                 </div>
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Patente / Dominio</label>
-                    <input type="text" name="vehiculo_patente" required placeholder="Ej: AB123CD" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
+
+                <!-- Marca y Modelo -->
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Marca</label>
+                    <input type="text" name="vehiculo_marca" required placeholder="Ej: Toyota" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
                 </div>
-                <div class="space-y-2">
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Modelo</label>
+                    <input type="text" name="vehiculo_modelo" required placeholder="Ej: Etios X" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
+                </div>
+
+                <!-- Año y Patente -->
+                <div class="md:col-span-1 space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Año</label>
+                    <input type="number" name="vehiculo_anio" min="1950" max="2027" required placeholder="2019" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
+                </div>
+                <div class="md:col-span-3 space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Patente / Dominio</label>
+                    <input type="text" name="vehiculo_patente" required placeholder="AB123CD" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
+                </div>
+
+                <!-- Fecha y Servicio -->
+                <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Fecha Preferencial</label>
                     <input type="date" name="fecha_turno" required class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
                 </div>
-                <div class="space-y-2">
+                <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Servicio Requerido</label>
-                    <select name="servicio_tipo" class="w-full rounded-sm px-4 py-4 outline-none transition-colors">
+                    <select name="servicio_tipo" class="w-full rounded-sm px-4 py-4 outline-none transition-colors appearance-none">
                         <option value="service-10k">Service 10.000 KM</option>
                         <option value="frenos">Frenos / Tren Delantero</option>
                         <option value="inyeccion">Inyección Electrónica</option>
                         <option value="otros">Reparación General</option>
                     </select>
                 </div>
-                <div class="md:col-span-2 space-y-2">
+
+                <!-- Comentarios -->
+                <div class="md:col-span-4 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-widest text-ferro">Comentarios Adicionales (Falla detectada)</label>
-                    <textarea name="detalles" rows="4" class="w-full rounded-sm px-4 py-4 outline-none resize-none"></textarea>
+                    <textarea name="detalles" rows="4" class="w-full rounded-sm px-4 py-4 outline-none resize-none transition-colors"></textarea>
                 </div>
-                <div class="md:col-span-2 pt-6">
+
+                <!-- Botón -->
+                <div class="md:col-span-4 pt-6">
                     <button type="submit" class="w-full bg-ferro text-black font-black py-5 uppercase tracking-widest hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20">
                         Confirmar Solicitud de Turno
                     </button>
