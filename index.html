@@ -37,29 +37,6 @@
             background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.6) 100%);
         }
 
-        /* LOGO TIPO BLOQUE CENTRADO */
-        .logo-container {
-            display: inline-flex;
-            flex-direction: column;
-            line-height: 0.75;
-            align-items: center;
-        }
-        .logo-ferro {
-            font-size: 3.5rem;
-            letter-spacing: -0.05em;
-            display: block;
-        }
-        .logo-mecanica {
-            font-size: 0.9rem;
-            font-weight: 900;
-            letter-spacing: 0.48em;
-            width: 100%;
-            display: block;
-            margin-top: 6px;
-            text-align: center;
-            text-indent: 0.48em;
-        }
-
         /* Animación para el botón flotante */
         @keyframes pulse-orange {
             0% { box-shadow: 0 0 0 0 rgba(228, 138, 6, 0.7); }
@@ -91,7 +68,7 @@
             cursor: pointer;
         }
 
-        /* Ajuste de scroll para compensar el header de 32 (8rem) */
+        /* Ajuste de scroll para compensar el header */
         .scroll-mt-nav {
             scroll-margin-top: 8rem;
         }
@@ -99,25 +76,15 @@
 </head>
 <body class="bg-[#0a0a0a] text-slate-100 leading-normal">
 
-    <!-- Navegación -->
+    <!-- Navegación sin logo -->
     <nav class="bg-black/95 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-32 items-center">
-                <div class="flex-shrink-0">
-                    <a href="javascript:void(0)" onclick="showPage('home-page')" class="logo-container group">
-                        <span class="logo-ferro font-audiowide uppercase text-white">
-                            <span class="text-ferro">F</span>ERRO
-                        </span>
-                        <span class="logo-mecanica text-ferro uppercase italic font-black">
-                            MECÁNICA
-                        </span>
-                    </a>
-                </div>
-                <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
+            <div class="flex justify-center md:justify-end h-24 items-center">
+                <div class="flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
                     <a href="javascript:void(0)" onclick="showPage('home-page')" class="nav-link-hover transition-colors">Inicio</a>
                     <a href="javascript:void(0)" onclick="showPage('home-page', 'servicios')" class="nav-link-hover transition-colors">Servicios</a>
                     <a href="javascript:void(0)" onclick="showPage('home-page', 'contacto')" class="nav-link-hover transition-colors">Ubicación</a>
-                    <button onclick="showPage('turnos-page')" class="bg-ferro text-black px-6 py-3 rounded-sm font-black hover:bg-orange-500 transition-all">Turnos</button>
+                    <button onclick="showPage('turnos-page')" class="bg-ferro text-black px-6 py-2 rounded-sm font-black hover:bg-orange-500 transition-all">Turnos</button>
                 </div>
             </div>
         </div>
@@ -137,11 +104,17 @@
                 <img src="muscular-car-service-worker-repairing-vehicle.jpg" alt="Taller Mecánico" class="w-full h-full object-cover">
             </div>
             
-            <div class="relative z-20 max-w-4xl px-4 text-center">
-                <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Servicio Integral del Automotor</span>
-                <h1 class="text-6xl md:text-8xl font-black mb-8 uppercase leading-none text-white">
-                    TALLER <br><span class="text-ferro italic">ESPECIALIZADO</span>
+            <div class="relative z-20 max-w-5xl px-4 text-center">
+                <!-- Eslogan arriba, estilo original pero un poco más grande -->
+                <span class="text-ferro font-black uppercase tracking-[0.4em] text-xs md:text-sm mb-4 block">
+                    Servicio Integral del Automotor
+                </span>
+                
+                <!-- FERRO un poco más pequeño que antes -->
+                <h1 class="font-audiowide text-7xl md:text-9xl uppercase leading-none text-white tracking-tighter mb-12">
+                    <span class="text-ferro">F</span>ERRO
                 </h1>
+                
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
                     <button onclick="showPage('turnos-page')" class="w-full sm:w-64 bg-ferro text-black px-8 py-4 rounded-sm font-black text-lg hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20">
                         SOLICITAR TURNO
@@ -323,25 +296,17 @@
 
     <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center">
-            <div class="logo-container mb-6">
-                <span class="logo-ferro font-audiowide uppercase text-white">
-                    <span class="text-ferro">F</span>ERRO
-                </span>
-                <span class="logo-mecanica text-ferro uppercase italic font-black">
-                    MECÁNICA
-                </span>
-            </div>
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="font-audiowide text-4xl uppercase text-white mb-2">
+                <span class="text-ferro">F</span>ERRO
+            </h2>
             <p class="text-[10px] text-slate-600 uppercase tracking-[0.5em]">© 2026 Ferro Mecánica • Rosario, Argentina</p>
         </div>
     </footer>
 
     <script>
         function showPage(pageId, sectionId) {
-            // Ocultar todas las páginas
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            
-            // Mostrar la página solicitada
             const target = document.getElementById(pageId);
             if(target) {
                 target.classList.add('active');
