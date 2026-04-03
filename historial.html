@@ -34,8 +34,7 @@
         }
         input:focus { border-color: var(--ferro-orange) !important; outline: none; }
 
-        /* Estilo técnico para el auto */
-        .car-model-display {
+        .car-model-header {
             opacity: 0.4;
             filter: grayscale(100%) brightness(1.2);
             pointer-events: none;
@@ -92,24 +91,27 @@
         </div>
     </section>
 
-    <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30 -mt-32">
+    <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30">
         
-        <div class="flex justify-center -mb-16 relative z-0">
-            <img id="car-img" src="" class="car-model-display w-[90%] md:w-[70%] h-auto" style="display: none;">
-        </div>
+        <div class="relative mt-12 md:mt-48">
+            
+            <div class="absolute inset-x-0 -top-24 md:-top-48 flex justify-center z-0">
+                <img id="car-img" src="" class="car-model-header w-[85%] md:w-[65%] h-auto" style="display: none;">
+            </div>
 
-        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 pt-12 md:pt-16 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-10">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h3 id="nombre-cliente" class="font-open font-extrabold text-2xl text-white uppercase tracking-tight leading-none"></h3>
-                    <p id="datos-auto" class="text-slate-400 font-bold text-sm uppercase tracking-widest mt-3"></p>
-                    <div id="smart-service" class="mt-4 inline-block bg-ferro/10 border border-ferro/30 px-3 py-1 rounded-sm text-ferro text-[11px] font-black uppercase tracking-widest">
-                        Próximo servicio: <span id="val-smart-service">---</span> KM
+            <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <h3 id="nombre-cliente" class="font-open font-extrabold text-2xl text-white uppercase tracking-tight leading-none"></h3>
+                        <p id="datos-auto" class="text-slate-400 font-bold text-sm uppercase tracking-widest mt-3"></p>
+                        <div id="smart-service" class="mt-4 inline-block bg-ferro/10 border border-ferro/30 px-3 py-1 rounded-sm text-ferro text-[11px] font-black uppercase tracking-widest">
+                            Próximo servicio: <span id="val-smart-service">---</span> KM
+                        </div>
                     </div>
+                    <button onclick="location.reload()" class="text-[10px] font-black bg-white/5 border border-white/10 px-6 py-3 hover:bg-white/10 transition-all uppercase tracking-widest self-start md:self-center">
+                        Cerrar Sesión
+                    </button>
                 </div>
-                <button onclick="location.reload()" class="text-[10px] font-black bg-white/5 border border-white/10 px-6 py-3 hover:bg-white/10 transition-all uppercase tracking-widest self-start md:self-center">
-                    Cerrar Sesión
-                </button>
             </div>
         </div>
 
@@ -161,8 +163,6 @@
                         carImg.src = `assets/${normalizedName}.jpg`;
                         carImg.onload = () => carImg.style.display = 'block';
                         carImg.onerror = () => carImg.style.display = 'none';
-                    } else {
-                        carImg.style.display = 'none';
                     }
 
                     const proximoServiceReciente = data.historial.find(ot => ot.proximo && ot.proximo !== "");
