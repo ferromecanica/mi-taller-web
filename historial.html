@@ -34,6 +34,14 @@
             color: white !important;
         }
         input:focus { border-color: var(--ferro-orange) !important; outline: none; }
+
+        /* Estilo para el modelo 3D con transparencia */
+        .car-model-overlay {
+            opacity: 0.25;
+            filter: grayscale(100%) brightness(1.3);
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body class="text-slate-100">
@@ -86,8 +94,11 @@
     </section>
 
     <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30 -mt-40">
-        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative overflow-hidden">
+            
+            <img id="car-img" src="" class="car-model-overlay absolute right-[-5%] top-[-15%] w-[55%] md:w-[35%] h-auto z-0" style="display: none;">
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                 <div>
                     <h3 id="nombre-cliente" class="font-open font-extrabold text-2xl text-white uppercase tracking-tight leading-none"></h3>
                     <p id="datos-auto" class="text-slate-400 font-bold text-sm uppercase tracking-widest mt-3"></p>
@@ -109,6 +120,19 @@
 
     <script>
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxJdvYN-q2_p0mkqQnwx2at9AX-qYippQvASmDwluDOs3j3do76eHjA8zztBwPbZBc/exec";
+
+        // Diccionario de mapeo de modelos
+        const carMapping = {
+            "Peugeot 206": "peugeot_206.jpg",
+            "Chevrolet Agile": "chevrolet_agile.jpg",
+            "Renault Clio": "renault_clio.jpg",
+            "Fiat Cronos": "fiat_cronos.jpg",
+            "Chevrolet Cruze": "chevrolet_cruze.jpg",
+            "Nissan Tiida": "nissan_tiida.jpg",
+            "Nissan Versa": "nissan_versa.jpg",
+            "Renault Sandero Stepway": "renault_sandero_stepway.jpg",
+            "Volkswagen Voyage": "volkswage_voyage.jpg"
+        };
 
         async function consultarHistorial() {
             const emailInput = document.getElementById('email').value.trim();
@@ -142,6 +166,18 @@
                     document.getElementById('nombre-cliente').innerText = data.cliente;
                     document.getElementById('datos-auto').innerText = data.vehiculo;
                     
+                    // Lógica de imagen del auto
+                    const carImg = document.getElementById('car-img');
+                    const fileName = carMapping[data.vehiculo];
+                    
+                    if (fileName) {
+                        carImg.src = `assets/${fileName}`;
+                        carImg.onload = () => carImg.style.display = 'block';
+                        carImg.onerror = () => carImg.style.display = 'none';
+                    } else {
+                        carImg.style.display = 'none';
+                    }
+
                     const proximoServiceReciente = data.historial.find(ot => ot.proximo && ot.proximo !== "");
                     document.getElementById('val-smart-service').innerText = proximoServiceReciente ? proximoServiceReciente.proximo : "---";
 
