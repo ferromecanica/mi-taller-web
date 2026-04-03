@@ -34,16 +34,11 @@
         }
         input:focus { border-color: var(--ferro-orange) !important; outline: none; }
 
-        /* Estilo para el auto fuera de la etiqueta */
-        .car-model-side {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.15; /* Más sutil al estar fuera */
-            filter: grayscale(100%) brightness(1.2);
+        /* Estilo para el auto centrado */
+        .car-model-header {
+            opacity: 0.4; /* Un poco más de presencia para que se vea bien en celulares */
+            filter: grayscale(100%) brightness(1.3);
             pointer-events: none;
-            z-index: 10;
             transition: opacity 0.5s ease;
         }
     </style>
@@ -60,8 +55,6 @@
             </a>
         </div>
     </nav>
-
-    <img id="car-img" src="" class="car-model-side hidden lg:block w-[20%] max-w-[350px]" style="display: none;">
 
     <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
@@ -100,7 +93,10 @@
     </section>
 
     <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30 -mt-40">
-        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative">
+        
+        <img id="car-img" src="" class="car-model-header mx-auto block w-[70%] md:w-[45%] h-auto -mb-12 relative z-40" style="display: none;">
+
+        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-30">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
                     <h3 id="nombre-cliente" class="font-open font-extrabold text-2xl text-white uppercase tracking-tight leading-none"></h3>
@@ -157,7 +153,7 @@
                     document.getElementById('datos-auto').innerText = data.vehiculo;
                     
                     const carImg = document.getElementById('car-img');
-                    // Nissan Tiida -> nissan_tiida
+                    // Normalización para la búsqueda automática
                     const normalizedName = data.vehiculo.toLowerCase().trim().replace(/\s+/g, '_');
                     
                     if (normalizedName) {
