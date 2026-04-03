@@ -18,15 +18,13 @@
         .font-audiowide { font-family: 'Audiowide', cursive; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; }
 
-        /* Mismo overlay del index */
         .hero-overlay {
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,1) 100%);
         }
 
-        .spinner { border: 3px solid rgba(228, 138, 6, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: var(--ferro-orange); animation: spin 1s linear infinite; margin: auto; }
+        .spinner { border: 3px solid rgba(228, 138, 6, 0.1); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--ferro-orange); animation: spin 1s linear infinite; margin: auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Estilo de los inputs igual al formulario de turnos */
         input {
             background-color: #1c1c1c !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
@@ -38,8 +36,8 @@
 <body class="text-slate-100">
 
     <nav class="bg-black/95 backdrop-blur-lg border-b border-white/5 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
-            <a href="index.html" class="font-audiowide text-2xl uppercase tracking-tighter">
+        <div class="max-w-6xl mx-auto px-4 h-24 flex items-center justify-between">
+            <a href="index.html" class="font-audiowide text-4xl uppercase tracking-tighter">
                 <span class="text-ferro">F</span>ERRO
             </a>
             <a href="index.html" class="text-[11px] font-black uppercase tracking-widest text-slate-400 hover:text-ferro transition-colors">
@@ -85,20 +83,22 @@
     </section>
 
     <main id="resultado" class="hidden max-w-4xl mx-auto px-4 py-12">
-        <div class="bg-zinc-900/40 rounded-sm border border-white/5 p-6 mb-8 border-l-4 border-l-ferro">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="bg-zinc-900/40 rounded-sm border border-white/5 p-8 mb-8 border-l-4 border-l-ferro relative overflow-hidden">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
                 <div>
-                    <h3 id="nombre-cliente" class="font-audiowide text-2xl text-white uppercase tracking-tighter"></h3>
-                    <p id="datos-auto" class="text-ferro font-bold text-sm uppercase tracking-widest mt-1"></p>
+                    <h3 id="nombre-cliente" class="font-audiowide text-3xl text-white uppercase tracking-tighter"></h3>
+                    <p id="datos-auto" class="text-slate-400 font-bold text-sm uppercase tracking-widest mt-1"></p>
+                    <div id="smart-service" class="mt-4 inline-block bg-ferro/10 border border-ferro/30 px-3 py-1 rounded-sm text-ferro text-[11px] font-black uppercase tracking-widest">
+                        Próximo servicio (según registros): <span id="val-smart-service">---</span> KM
+                    </div>
                 </div>
-                <button onclick="location.reload()" class="text-[10px] font-black bg-white/5 border border-white/10 px-4 py-2 hover:bg-white/10 transition-all uppercase tracking-widest">
+                <button onclick="location.reload()" class="text-[10px] font-black bg-white/5 border border-white/10 px-6 py-3 hover:bg-white/10 transition-all uppercase tracking-widest self-start md:self-center">
                     Cerrar Sesión
                 </button>
             </div>
         </div>
 
-        <div id="lista-ot" class="space-y-6">
-            </div>
+        <div id="lista-ot" class="space-y-6"></div>
     </main>
 
     <footer class="py-12 border-t border-white/5 text-center">
@@ -140,25 +140,40 @@
                     document.getElementById('nombre-cliente').innerText = data.cliente;
                     document.getElementById('datos-auto').innerText = data.vehiculo;
                     
+                    // Lógica inteligente para el encabezado
+                    const proximoServiceReciente = data.historial.find(ot => ot.proximo && ot.proximo !== "");
+                    document.getElementById('val-smart-service').innerText = proximoServiceReciente ? proximoServiceReciente.proximo : "---";
+
                     let htmlHistorial = "";
                     if (data.historial.length === 0) {
-                        htmlHistorial = '<div class="text-center text-slate-500 py-12 uppercase text-xs tracking-widest">No se registran servicios cerrados.</div>';
+                        htmlHistorial = '<div class="text-center text-slate-500 py-12 uppercase text-xs tracking-widest font-bold">No se registran servicios cerrados.</div>';
                     } else {
                         data.historial.forEach(ot => {
                             htmlHistorial += `
                                 <div class="bg-zinc-900/40 rounded-sm border border-white/5 p-8 group hover:border-ferro/30 transition-all shadow-lg">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <div class="text-ferro font-black text-xs uppercase tracking-[0.2em]">${ot.fecha}</div>
-                                        <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">${ot.km} KM</div>
+                                    <div class="text-ferro font-black text-sm uppercase tracking-[0.2em] mb-6 border-b border-white/5 pb-4">
+                                        SERVICIO DEL ${ot.fecha}
                                     </div>
-                                    <div class="text-slate-300 text-sm leading-relaxed mb-6">${ot.detalle}</div>
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-white/5">
-                                        <div class="text-[10px] text-slate-500 uppercase tracking-widest">
-                                            Próximo Service sugerido: <span class="text-white font-bold">${ot.proximo} KM</span>
-                                        </div>
+                                    
+                                    <div class="space-y-3 mb-8">
+                                        <p class="text-slate-300 text-sm leading-relaxed">
+                                            <span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">MOTIVO:</span> 
+                                            ${ot.detalle}
+                                        </p>
+                                        <p class="text-slate-300 text-sm">
+                                            <span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">KILOMETRAJE:</span> 
+                                            ${ot.km} KM
+                                        </p>
+                                        <p class="text-slate-300 text-sm">
+                                            <span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">PRÓXIMO SERVICE:</span> 
+                                            ${ot.proximo || "---"} KM
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-end pt-4">
                                         ${ot.pdf ? `
-                                            <a href="${ot.pdf}" target="_blank" class="bg-white/5 border border-ferro text-ferro px-6 py-2.5 rounded-sm font-black text-[10px] hover:bg-ferro hover:text-black transition-all uppercase tracking-widest text-center">
-                                                Ver Reporte PDF
+                                            <a href="${ot.pdf}" target="_blank" class="bg-white/5 border border-ferro text-ferro px-8 py-3 rounded-sm font-black text-[10px] hover:bg-ferro hover:text-black transition-all uppercase tracking-[0.2em] text-center w-full md:w-auto">
+                                                DESCARGAR REPORTE PDF
                                             </a>` : ''}
                                     </div>
                                 </div>
@@ -168,7 +183,6 @@
 
                     document.getElementById('lista-ot').innerHTML = htmlHistorial;
                     resultado.classList.remove('hidden');
-                    // Scroll suave hasta los resultados
                     resultado.scrollIntoView({ behavior: 'smooth' });
                 }
             } catch (err) {
