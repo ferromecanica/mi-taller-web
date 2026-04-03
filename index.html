@@ -6,7 +6,6 @@
     <title>Ferro Mecánica | Servicio Integral del Automotor</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,12 +16,11 @@
         .text-ferro { color: var(--ferro-orange); }
         .border-ferro { border-color: var(--ferro-orange); }
         .font-audiowide { font-family: 'Audiowide', cursive; }
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; }
 
         .dark-map { filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%); }
         .nav-link-hover:hover { color: var(--ferro-orange); }
 
-        /* Degradados y Overlays */
         .hero-overlay {
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,1) 100%);
         }
@@ -33,7 +31,6 @@
             background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9));
         }
 
-        /* Animación WhatsApp */
         @keyframes pulse-orange {
             0% { box-shadow: 0 0 0 0 rgba(228, 138, 6, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(228, 138, 6, 0); }
@@ -41,11 +38,9 @@
         }
         .float-wsp { animation: pulse-orange 2s infinite; }
 
-        /* Control de Vistas */
         .page-view { display: none; }
         .page-view.active { display: block; }
 
-        /* Estilo Formuarios */
         input, textarea, select {
             background-color: #1c1c1c !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
@@ -59,7 +54,7 @@
         .scroll-mt-nav { scroll-margin-top: 8rem; }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-slate-100 leading-normal">
+<body class="text-slate-100 leading-normal">
 
     <nav class="bg-black/95 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -89,7 +84,7 @@
                 <span class="text-ferro font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block">Servicio Integral del Automotor</span>
                 <h1 class="font-audiowide text-7xl md:text-9xl uppercase leading-none text-white tracking-tighter mb-12"><span class="text-ferro">F</span>ERRO</h1>
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <button onclick="showPage('turnos-page')" class="w-full sm:w-56 bg-ferro text-black px-6 py-3.5 rounded-sm font-black text-sm hover:bg-orange-500 transition-all shadow-xl uppercase tracking-widest">SOLICITAR TURNO</button>
+                    <button onclick="showPage('turnos-page')" class="w-full sm:w-56 bg-ferro text-black px-6 py-3.5 rounded-sm font-black text-sm hover:bg-orange-500 transition-all uppercase tracking-widest shadow-xl shadow-orange-900/20">SOLICITAR TURNO</button>
                     <button onclick="showPage('contact-page')" class="w-full sm:w-56 bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3.5 rounded-sm font-black text-sm hover:bg-white/10 transition-all uppercase tracking-widest">CONSULTAR</button>
                     <a href="historial.html" class="w-full sm:w-56 bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3.5 rounded-sm font-black text-sm hover:bg-white/10 transition-all text-center uppercase tracking-widest">MI HISTORIAL</a>
                 </div>
@@ -99,7 +94,6 @@
         <section id="servicios" class="py-24 bg-[#0a0a0a] scroll-mt-nav">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="FOTO SCANEO.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -110,10 +104,9 @@
                             </div>
                         </div>
                         <div class="p-6 pt-2 flex-grow">
-                            <p class="text-slate-400 text-sm leading-relaxed">Diagnóstico multimarca con equipamiento profesional, servicio comparable a una concesionaria oficial. Test completo de módulos del vehículo, ABS/ESP, inyección, cuadro de Instrumentos, inmovilizador, airbag, climatización y módulos adicionales. Búsqueda de fallos tanto electrónicos como mecánicos.</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">Diagnóstico multimarca con equipamiento profesional, servicio comparable a una concesionaria oficial. Test completo de módulos del vehículo, ABS/ESP, inyección, cuadro de Instrumentos, inmovilizador, airbag, climatización y módulos adicionales. Búsqueda de fallos tanto electrónicos como mecánicos. Excelente opción como servicio precompra de autos usados.</p>
                         </div>
                     </div>
-
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="CAMBIO DE ACEITE.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -127,21 +120,19 @@
                             <p class="text-slate-400 text-sm leading-relaxed">Mantenimiento preventivo de cambio de aceite y filtros. Aprovechamos para realizar un chequeo integral de todos los niveles de fluidos. Se finaliza el servicio entregando al cliente un reporte del mantenimiento realizado.</p>
                         </div>
                     </div>
-
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="TREN DELANTERO.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
                             <div class="absolute inset-0 service-title-overlay z-10"></div>
                             <div class="absolute bottom-0 p-6 z-20">
-                                <h3 class="text-ferro font-black uppercase text-xl tracking-tighter mb-2">03. Tren delantero</h3>
+                                <h3 class="text-ferro font-black uppercase text-xl mb-2">03. Tren delantero</h3>
                                 <h4 class="text-[13px] font-black text-white uppercase tracking-widest leading-none">Reparación Integral</h4>
                             </div>
                         </div>
                         <div class="p-6 pt-2 flex-grow">
-                            <p class="text-slate-400 text-sm leading-relaxed">El servicio de tren delantero es esencial para la seguridad, estabilidad y confort del vehículo, incluyendo la revisión y reparación de suspensión, dirección y frenos. La revisión abarca componentes como amortiguadores, rótulas, bujes, extremos de dirección y pastillas.</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">El servicio de tren delantero es esencial para la seguridad, estabilidad y confort del vehículo, incluyendo la revisión y reparación de suspensión, dirección y frenos. La revisión abarca componentes como amortiguadores, rótulas, bujes, extremos de dirección, parrillas, bieletas, discos y pastillas.</p>
                         </div>
                     </div>
-
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="ELECTRICIDAD.png" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -155,7 +146,6 @@
                             <p class="text-slate-400 text-sm leading-relaxed">Reparación de encendido, alternadores, motores de arranque y baterías. Soluciones especializadas en módulos electrónicos y gestión de energía para todo tipo de vehículos.</p>
                         </div>
                     </div>
-
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="ARREGLOMOTOR.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -166,10 +156,9 @@
                             </div>
                         </div>
                         <div class="p-6 pt-2 flex-grow">
-                            <p class="text-slate-400 text-sm leading-relaxed">Realizamos reparación integral de motores y transmisiones de alta complejidad. Servicios de inyectores en banco propio, medición de compresión, reparación de tapa de cilindros, distribución, bombas de agua y más.</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">Realizamos desde trabajos básicos, hasta la reparación integral de motores y transmisiones de alta complejidad. Estos servicios abarcan: limpieza, prueba y calibración de Inyectores en banco propio, medición de compresión, reparación de tapa de cilindros, reemplazo de correas o cadenas de distribución, tensores y correas poly-V, bombas de agua, y más, consúltenos.</p>
                         </div>
                     </div>
-
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 border-t-2 border-ferro">
                             <img src="software-gestion.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
@@ -180,7 +169,7 @@
                             </div>
                         </div>
                         <div class="p-6 pt-2 flex-grow">
-                            <p class="text-slate-400 text-sm leading-relaxed">Hemos desarrollado un software de gestión a medida para tener trazabilidad total de cada vehículo: gestión de turnos, manejo de stock, órdenes de trabajo de taller y reportes automáticos que conservamos para tu historial.</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">Hemos desarrollado un software de gestión a medida para tener trazabilidad total de cada vehículo: presupuestos sencillos, gestión de turnos, manejo de stock, consumo de repuestos y lo más importante: órdenes de trabajo de taller y reportes automáticos de mantenimiento consultables en cualquier momento.</p>
                         </div>
                     </div>
                 </div>
@@ -204,16 +193,12 @@
                 <div class="relative h-48 rounded-sm overflow-hidden border border-white/5 group shadow-xl bg-zinc-900/50">
                     <div class="absolute inset-0 partner-overlay z-10"></div>
                     <img src="bosch.png" class="w-full h-full object-contain p-8 grayscale group-hover:grayscale-0 transition-all">
-                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6">
-                        <span class="text-ferro font-black text-[10px] tracking-widest uppercase">Tecnología BOSCH</span>
-                    </div>
+                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6"><span class="text-ferro font-black text-[10px] tracking-widest uppercase">Tecnología BOSCH</span></div>
                 </div>
                 <div class="relative h-48 rounded-sm overflow-hidden border border-white/5 group shadow-xl bg-zinc-900/50">
                     <div class="absolute inset-0 partner-overlay z-10"></div>
                     <img src="mahle.jpg" class="w-full h-full object-contain p-8 grayscale group-hover:grayscale-0 transition-all">
-                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6">
-                        <span class="text-ferro font-black text-[10px] tracking-widest uppercase">Filtración MAHLE</span>
-                    </div>
+                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6"><span class="text-ferro font-black text-[10px] tracking-widest uppercase">Filtración MAHLE</span></div>
                 </div>
             </div>
         </section>
@@ -226,14 +211,14 @@
                             <h2 class="text-2xl font-black uppercase mb-8 text-white tracking-widest">Ubicación</h2>
                             <div class="space-y-6 text-slate-300 text-sm tracking-wide">
                                 <p><i class="fas fa-map-marker-alt text-ferro mr-3"></i> Santa María de Oro 217 bis, Rosario</p>
-                                <p><i class="fab fa-whatsapp text-ferro mr-3"></i> 341 718-3101</p>
-                                <p><i class="far fa-envelope text-ferro mr-3"></i> ferrotaller@outlook.com</p>
+                                <p><i class="fab fa-whatsapp text-ferro mr-3 text-base"></i> 341 718-3101</p>
+                                <p><i class="far fa-envelope text-ferro mr-3 text-base"></i> ferrotaller@outlook.com</p>
                                 <p><i class="fas fa-clock text-ferro mr-3"></i> Lun a Vie: 08:00 a 17:00 | Sáb: 09:00 a 13:00 hs</p>
                             </div>
                         </div>
                     </div>
                     <div class="lg:w-1/2 h-80 lg:h-auto min-h-[400px]">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.6755734892437!2d-60.672728923485744!3d-32.933190872202615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab45810646c9%3A0xda9afe783cf3ff9e!2sFerro%20Mec%C3%A1nica!5e0!3m2!1ses-419!2sar!4v1714567890123!5m2!1ses-419!2sar" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.6738924151745!2d-60.6729226!3d-32.9332569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6536340325d7b%3A0x67343e0617e942f!2sSanta%20Mar%C3%ADa%20de%20Oro%20217%2C%20S2000%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1711200000000!5m2!1ses!2sar7" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -265,15 +250,15 @@
             <button onclick="showPage('home-page')" class="text-ferro font-bold uppercase tracking-widest text-[10px] mb-12 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i> Volver al inicio</button>
             <div class="text-center mb-16"><h2 class="text-4xl font-black uppercase text-white mb-4 tracking-tighter">Reserva de Turno</h2><div class="h-1 w-16 bg-ferro mx-auto"></div></div>
             <form action="https://formspree.io/f/xqedakee" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#151515] p-8 md:p-12 rounded-sm border border-white/10 shadow-2xl">
-                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Nombre del Propietario</label><input type="text" name="cliente_nombre" required class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Cód. Área (sin 0)</label><input type="tel" name="telefono_cod_area" required placeholder="341" class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Número (sin 15)</label><input type="tel" name="telefono_numero" required placeholder="7183101" class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Vehículo (Marca y Modelo)</label><input type="text" name="vehiculo_datos" required placeholder="Ej: Toyota Etios" class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Año</label><input type="number" name="vehiculo_anio" min="1950" max="2027" required class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Patente / Dominio</label><input type="text" name="vehiculo_patente" required class="w-full rounded-sm px-4 py-3 text-sm uppercase"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Fecha Preferencial</label><input type="date" name="fecha_turno" required class="w-full rounded-sm px-4 py-3 text-sm"></div>
-                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Servicio Requerido</label><select name="servicio_tipo" class="w-full rounded-sm px-4 py-3 text-sm appearance-none bg-[#1c1c1c]"><option value="aceite-filtros">Cambio de aceite y filtros</option><option value="frenos">Frenos / Tren Delantero</option><option value="inyeccion">Inyección Electrónica</option><option value="reparacion-general">Reparación General</option><option value="otros">Otros</option></select></div>
-                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Comentarios Adicionales</label><textarea name="detalles" rows="4" class="w-full rounded-sm px-4 py-3 text-sm resize-none"></textarea></div>
+                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Nombre del Propietario</label><input type="text" name="cliente_nombre" required class="w-full px-4 py-3 text-sm"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Cód. Área (sin 0)</label><input type="tel" name="telefono_cod_area" required placeholder="341" class="w-full px-4 py-3 text-sm"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Número (sin 15)</label><input type="tel" name="telefono_numero" required placeholder="7183101" class="w-full px-4 py-3 text-sm"></div>
+                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Vehículo (Marca y Modelo)</label><input type="text" name="vehiculo_datos" required placeholder="Ej: Toyota Etios" class="w-full px-4 py-3 text-sm"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Año</label><input type="number" name="vehiculo_anio" min="1950" max="2027" required class="w-full px-4 py-3 text-sm"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Patente / Dominio</label><input type="text" name="vehiculo_patente" required class="w-full px-4 py-3 text-sm uppercase"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Fecha Preferencial</label><input type="date" name="fecha_turno" required class="w-full px-4 py-3 text-sm"></div>
+                <div class="space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Servicio Requerido</label><select name="servicio_tipo" class="w-full px-4 py-3 text-sm appearance-none bg-[#1c1c1c]"><option value="aceite-filtros">Cambio de aceite y filtros</option><option value="frenos">Frenos / Tren Delantero</option><option value="inyeccion">Inyección Electrónica</option><option value="reparacion-general">Reparación General</option><option value="otros">Otros</option></select></div>
+                <div class="md:col-span-2 space-y-2"><label class="text-[9px] font-black uppercase tracking-widest text-ferro">Comentarios Adicionales</label><textarea name="detalles" rows="4" class="w-full px-4 py-3 text-sm resize-none"></textarea></div>
                 <div class="md:col-span-2 pt-6"><button type="submit" class="w-full bg-ferro text-black font-black py-4 uppercase tracking-widest hover:bg-orange-500 transition-all">Confirmar Turno</button></div>
             </form>
         </div>
@@ -282,22 +267,21 @@
     <div id="contact-page" class="page-view py-32 bg-[#0f0f0f] min-h-screen">
         <div class="max-w-4xl mx-auto px-4">
             <button onclick="showPage('home-page')" class="text-ferro font-bold uppercase tracking-widest text-[10px] mb-12 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i> Volver</button>
-            <h2 class="text-4xl font-black uppercase text-white mb-16 text-center">Consulta Online</h2>
-            <form action="https://formspree.io/f/xqedakee" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#151515] p-8 border border-white/10 shadow-2xl">
-                <input type="text" name="name" placeholder="Nombre" required class="w-full p-4 text-sm">
-                <input type="tel" name="phone" placeholder="Teléfono" required class="w-full p-4 text-sm">
+            <h2 class="text-4xl font-black uppercase text-white mb-16 text-center tracking-tighter">Consulta Online</h2>
+            <form action="https://formspree.io/f/xqedakee" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#151515] p-8 md:p-12 border border-white/10 shadow-2xl">
+                <input type="text" name="name" placeholder="Nombre" required class="w-full p-4 text-sm"><input type="tel" name="phone" placeholder="Teléfono" required class="w-full p-4 text-sm">
                 <textarea name="message" rows="5" placeholder="Tu mensaje..." required class="w-full p-4 text-sm md:col-span-2 resize-none"></textarea>
-                <button type="submit" class="w-full bg-ferro text-black font-black py-4 uppercase tracking-widest md:col-span-2">Enviar Consulta</button>
+                <button type="submit" class="w-full bg-ferro text-black font-black py-4 uppercase tracking-widest md:col-span-2 hover:bg-orange-500 transition-all">Enviar</button>
             </form>
         </div>
     </div>
 
     <footer class="bg-black py-16 border-t border-white/5 text-center">
-        <h2 class="font-audiowide text-4xl uppercase text-white mb-4"><span class="text-ferro">F</span>ERRO</h2>
-        <div class="flex justify-center space-x-6 mb-8">
-            <a href="https://wa.me/3417183101" class="text-slate-500 hover:text-ferro transition-colors text-lg"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:ferrotaller@outlook.com" class="text-slate-500 hover:text-ferro transition-colors text-lg"><i class="far fa-envelope"></i></a>
-            <a href="https://instagram.com/ferromecanica" class="text-slate-500 hover:text-ferro transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+        <h2 class="font-audiowide text-4xl uppercase text-white mb-2"><span class="text-ferro">F</span>ERRO</h2>
+        <div class="flex justify-center space-x-6 mb-8 mt-4">
+            <a href="https://wa.me/3417183101" target="_blank" class="text-slate-500 hover:text-ferro text-lg"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ferrotaller@outlook.com" class="text-slate-500 hover:text-ferro text-lg"><i class="far fa-envelope"></i></a>
+            <a href="https://instagram.com/ferromecanica" target="_blank" class="text-slate-500 hover:text-ferro text-lg"><i class="fab fa-instagram"></i></a>
         </div>
         <p class="text-[9px] text-slate-600 uppercase tracking-[0.5em]">© 2026 Ferro Mecánica • Rosario, Argentina</p>
     </footer>
@@ -309,8 +293,7 @@
             if(target) {
                 target.classList.add('active');
                 if(sectionId) {
-                    const element = document.getElementById(sectionId);
-                    if(element) element.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
                 } else {
                     window.scrollTo({ top: 0, behavior: 'instant' });
                 }
