@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;700;900&family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --ferro-orange: #E48A06; }
@@ -18,7 +18,6 @@
         .font-audiowide { font-family: 'Audiowide', cursive; }
         .font-open { font-family: 'Open Sans', sans-serif; }
         
-        /* FONDO GRIS OSCURO */
         body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; }
 
         .hero-overlay {
@@ -35,7 +34,6 @@
         }
         input:focus { border-color: var(--ferro-orange) !important; outline: none; }
 
-        /* Estilo técnico para el auto centrado */
         .car-model-header {
             opacity: 0.35;
             filter: grayscale(100%) brightness(1.3);
@@ -95,9 +93,9 @@
 
     <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30 -mt-40">
         
-        <img id="car-img" src="" class="car-model-header absolute z-0 left-1/2 -translate-x-1/2 top-[-200px] w-[85%] md:w-[65%] h-auto" style="display: none;">
+        <img id="car-img" src="" class="car-model-header absolute z-0 left-1/2 -translate-x-1/2 top-[-210px] w-[90%] md:w-[70%] h-auto" style="display: none;">
 
-        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-10 mt-52">
+        <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-10 mt-60">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
                     <h3 id="nombre-cliente" class="font-open font-extrabold text-2xl text-white uppercase tracking-tight leading-none"></h3>
@@ -129,12 +127,14 @@
             const authContainer = document.getElementById('auth-container');
             const resultado = document.getElementById('resultado');
 
+            // 1. Verificación básica antes de empezar
             if (!emailInput || !patenteInput) {
                 errorMsg.innerText = "Por favor, complete ambos campos.";
                 errorMsg.classList.remove('hidden');
                 return;
             }
 
+            // 2. Mostrar loader y ocultar login
             errorMsg.classList.add('hidden');
             loader.classList.remove('hidden');
             authContainer.classList.add('hidden');
@@ -150,24 +150,26 @@
                     errorMsg.classList.remove('hidden');
                     authContainer.classList.remove('hidden');
                 } else {
-                    document.getElementById('nombre-cliente').innerText = data.cliente;
-                    document.getElementById('datos-auto').innerText = data.vehiculo;
+                    // Llenar datos de texto
+                    document.getElementById('nombre-cliente').innerText = data.cliente || "Cliente";
+                    document.getElementById('datos-auto').innerText = data.vehiculo || "";
                     
+                    // Lógica del auto (Mejorada para que no rompa el script)
                     const carImg = document.getElementById('car-img');
-                    // Normalización automática
-                    const normalizedName = data.vehiculo.toLowerCase().trim().replace(/\s+/g, '_');
-                    
-                    if (normalizedName) {
-                        carImg.src = `assets/${normalizedName}.jpg`;
+                    if (data.vehiculo) {
+                        const normalized = data.vehiculo.toLowerCase().trim().replace(/\s+/g, '_');
+                        carImg.src = `assets/${normalized}.jpg`;
                         carImg.onload = () => carImg.style.display = 'block';
                         carImg.onerror = () => carImg.style.display = 'none';
                     }
 
+                    // Próximo service
                     const proximoServiceReciente = data.historial.find(ot => ot.proximo && ot.proximo !== "");
                     document.getElementById('val-smart-service').innerText = proximoServiceReciente ? proximoServiceReciente.proximo : "---";
 
+                    // Armar lista de servicios
                     let htmlHistorial = "";
-                    if (data.historial.length === 0) {
+                    if (!data.historial || data.historial.length === 0) {
                         htmlHistorial = '<div class="text-center text-slate-500 py-12 uppercase text-xs tracking-widest font-bold">No se registran servicios cerrados.</div>';
                     } else {
                         data.historial.forEach(ot => {
@@ -178,4 +180,28 @@
                                     </div>
                                     <div class="space-y-3 mb-8">
                                         <p class="text-slate-300 text-sm leading-relaxed"><span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">MOTIVO:</span> ${ot.detalle}</p>
-                                        <p class="text-slate-300 text-sm"><span class="text-fer
+                                        <p class="text-slate-300 text-sm"><span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">KILOMETRAJE:</span> ${ot.km} KM</p>
+                                        <p class="text-slate-300 text-sm"><span class="text-ferro font-black uppercase text-[10px] tracking-widest mr-2">PRÓXIMO SERVICE:</span> ${ot.proximo || "---"} KM</p>
+                                    </div>
+                                    <div class="flex justify-end pt-4">
+                                        ${ot.pdf ? `<a href="${ot.pdf}" target="_blank" class="bg-white/5 border border-ferro text-ferro px-8 py-3 rounded-sm font-black text-[10px] hover:bg-ferro hover:text-black transition-all uppercase tracking-[0.2em] text-center w-full md:w-auto">DESCARGAR REPORTE PDF</a>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+                    document.getElementById('lista-ot').innerHTML = htmlHistorial;
+                    resultado.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch (err) {
+                loader.classList.add('hidden');
+                authContainer.classList.remove('hidden');
+                errorMsg.innerText = "Error de conexión. Intente más tarde.";
+                errorMsg.classList.remove('hidden');
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
