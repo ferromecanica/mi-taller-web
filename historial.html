@@ -35,8 +35,8 @@
         input:focus { border-color: var(--ferro-orange) !important; outline: none; }
 
         .car-model-header {
-            opacity: 0.4;
-            filter: grayscale(100%) brightness(1.2);
+            opacity: 0.45;
+            filter: grayscale(100%) brightness(1.3);
             pointer-events: none;
             transition: opacity 0.5s ease;
         }
@@ -91,12 +91,12 @@
         </div>
     </section>
 
-    <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30">
+    <main id="resultado" class="hidden max-w-4xl mx-auto px-4 pb-12 relative z-30 -mt-24">
         
-        <div class="relative mt-12 md:mt-48">
+        <div class="relative mt-12 md:mt-0">
             
-            <div class="absolute inset-x-0 -top-24 md:-top-48 flex justify-center z-0">
-                <img id="car-img" src="" class="car-model-header w-[85%] md:w-[65%] h-auto" style="display: none;">
+            <div class="absolute inset-x-0 -top-24 flex justify-center z-0 md:hidden">
+                <img id="car-img" src="" class="car-model-header w-[85%] h-auto" style="display: none;">
             </div>
 
             <div class="bg-[#242424] backdrop-blur-md rounded-sm border border-white/10 p-8 mb-8 border-l-4 border-l-ferro shadow-2xl relative z-10">
