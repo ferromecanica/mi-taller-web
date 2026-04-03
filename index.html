@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferro Mecánica | Servicio Integral del Automotor</title>
     
-    <!-- LÍNEA DEL FAVICON AGREGADA -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Tailwind para diseño moderno -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fuentes: Audiowide para FERRO e Inter para el resto -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -85,7 +81,6 @@
 </head>
 <body class="bg-[#0a0a0a] text-slate-100 leading-normal">
 
-    <!-- Navegación -->
     <nav class="bg-black/95 backdrop-blur-lg shadow-xl sticky top-0 z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center md:justify-end h-24 items-center">
@@ -93,20 +88,18 @@
                     <a href="javascript:void(0)" onclick="showPage('home-page')" class="nav-link-hover transition-colors">Inicio</a>
                     <a href="javascript:void(0)" onclick="showPage('home-page', 'servicios')" class="nav-link-hover transition-colors">Servicios</a>
                     <a href="javascript:void(0)" onclick="showPage('home-page', 'contacto')" class="nav-link-hover transition-colors">Ubicación</a>
+                    <a href="historial.html" class="nav-link-hover transition-colors border-b border-ferro/30 pb-1">Mi Historial</a>
                     <button onclick="showPage('turnos-page')" class="bg-ferro text-black px-6 py-2 rounded-sm font-black hover:bg-orange-500 transition-all">Turnos</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Botón WhatsApp Flotante -->
     <a href="https://wa.me/3417183101" target="_blank" class="fixed bottom-8 right-8 z-[100] bg-ferro text-black w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl float-wsp transition-transform hover:scale-110 active:scale-95">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- VISTA: INICIO -->
     <div id="home-page" class="page-view active">
-        <!-- Hero Section -->
         <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <div class="absolute inset-0 hero-overlay z-10"></div>
@@ -123,7 +116,10 @@
                 </h1>
                 
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <button onclick="showPage('turnos-page')" class="w-full sm:w-56 bg-ferro text-black px-6 py-3.5 rounded-sm font-black text-sm hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20 uppercase tracking-widest">
+                    <a href="historial.html" class="w-full sm:w-56 bg-ferro text-black px-6 py-3.5 rounded-sm font-black text-sm hover:bg-orange-500 transition-all shadow-xl shadow-orange-900/20 uppercase tracking-widest text-center">
+                        MI HISTORIAL
+                    </a>
+                    <button onclick="showPage('turnos-page')" class="w-full sm:w-56 bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3.5 rounded-sm font-black text-sm hover:bg-white/10 transition-all text-white uppercase tracking-widest">
                         SOLICITAR TURNO
                     </button>
                     <button onclick="showPage('contact-page')" class="w-full sm:w-56 bg-white/5 backdrop-blur-md border border-white/10 px-6 py-3.5 rounded-sm font-black text-sm hover:bg-white/10 transition-all text-white uppercase tracking-widest">
@@ -133,12 +129,10 @@
             </div>
         </section>
 
-        <!-- Servicios -->
         <section id="servicios" class="py-24 bg-[#0a0a0a] scroll-mt-nav">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Servicio 01: Diagnóstico -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="FOTO SCANEO.jpg" alt="Diagnóstico" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -155,7 +149,6 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 02: Mantenimiento -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="CAMBIO DE ACEITE.jpg" alt="Mantenimiento" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -172,7 +165,6 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 03: Tren delantero -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="TREN DELANTERO.jpg" alt="Tren Delantero" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -189,7 +181,6 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 04: Electricidad -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="ELECTRICIDAD.png" alt="Electricidad" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -206,7 +197,6 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 05: Motores -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="ARREGLOMOTOR.jpg" alt="Motores" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -223,7 +213,6 @@
                         </div>
                     </div>
 
-                    <!-- Servicio 06: Software de Gestión -->
                     <div class="bg-zinc-900/40 rounded-sm overflow-hidden border border-white/5 group shadow-lg flex flex-col">
                         <div class="relative h-64 overflow-hidden border-t-2 border-ferro shrink-0">
                             <img src="software-gestion.jpg" alt="Software de Gestión" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
@@ -243,7 +232,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN SHELL (ALIANZA DE CALIDAD) -->
         <section id="shell" class="max-w-6xl mx-auto px-4 pb-24 scroll-mt-nav">
             <div class="relative py-24 flex items-center justify-center overflow-hidden rounded-sm border border-white/5 shadow-2xl">
                 <div class="absolute inset-0 z-0">
@@ -263,7 +251,6 @@
             </div>
         </section>
 
-        <!-- Ubicación y Redes -->
         <section id="contacto" class="py-24 bg-zinc-900/20 scroll-mt-nav">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="bg-black rounded-sm border border-white/5 flex flex-col lg:flex-row overflow-hidden shadow-2xl">
@@ -288,13 +275,12 @@
                         </div>
                     </div>
                     <div class="lg:w-1/2 h-80 lg:h-auto min-h-[400px]">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.563456345634!2d-60.6766!3d-32.9123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6534563456345%3A0x6345634563456345!2sSanta%20Mar%C3%ADa%20de%20Oro%20217%20bis%2C%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v123456789" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.6738924151745!2d-60.6729226!3d-32.9332569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6536340325d7b%3A0x67343e0617e942f!2sSanta%20Mar%C3%ADa%20de%20Oro%20217%2C%20S2000%20Rosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1711200000000!5m2!1ses!2sar" class="w-full h-full border-none dark-map" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Barra de Confianza (Pagos y Fiscal) -->
         <section class="py-12 bg-black border-y border-white/5">
             <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center">
                 <div class="flex flex-col items-center">
@@ -316,7 +302,6 @@
         </section>
     </div>
 
-    <!-- VISTA: FORMULARIO DE CONSULTA -->
     <div id="contact-page" class="page-view py-32 bg-[#0f0f0f] min-h-screen">
         <div class="max-w-4xl mx-auto px-4">
             <button onclick="showPage('home-page')" class="text-ferro font-bold uppercase tracking-widest text-[10px] mb-12 hover:text-white transition-colors">
@@ -351,7 +336,6 @@
         </div>
     </div>
 
-    <!-- VISTA: FORMULARIO DE TURNOS -->
     <div id="turnos-page" class="page-view py-32 bg-[#0f0f0f] min-h-screen">
         <div class="max-w-4xl mx-auto px-4">
             <button onclick="showPage('home-page')" class="text-ferro font-bold uppercase tracking-widest text-[10px] mb-12 hover:text-white transition-colors">
@@ -422,7 +406,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-black py-16 border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <h2 class="font-audiowide text-4xl uppercase text-white mb-2">
